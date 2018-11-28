@@ -1,29 +1,42 @@
 package fr.aubin.opiyou.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigInteger;
 
 @Entity
-@Table
+@Table(name="youtuber")
 public class Youtuber {
 
     @Id
     @GeneratedValue
+    @Column(name="idYoutuber")
     private int idYoutuber;
 
+    @Column(name="nameYoutuber")
     private String nameYoutuber;
+
+    @Column(name="firstNameYoutuber")
     private String firstnameYoutuber;
+
+    @Column(name="usernameYoutuber")
     private String usernameYoutuber;
+
+    @Column(name="channelNameYoutuber")
     private String channelNameYoutube;
-    private BigInteger subscribersCount;
+
+    @Column(name="subscribersCountYoutube")
+    private long subscribersCount;
+
+    @Column(name="loginYoutuber")
     private String loginYoutuber;
+
+    @Column(name="pwdYoutuber")
     private String pwdYoutuber;
+
+    @Column(name="linkChannel")
     private String linkChannel;
 
-    public Youtuber(int idYoutuber, String nameYoutuber, String firstnameYoutuber, String usernameYoutuber, String channelNameYoutube, BigInteger subscribersCount, String loginYoutuber, String pwdYoutuber, String linkChannel) {
+    public Youtuber(int idYoutuber, String nameYoutuber, String firstnameYoutuber, String usernameYoutuber, String channelNameYoutube, long subscribersCount, String loginYoutuber, String pwdYoutuber, String linkChannel) {
         this.idYoutuber = idYoutuber;
         this.nameYoutuber = nameYoutuber;
         this.firstnameYoutuber = firstnameYoutuber;
@@ -85,11 +98,11 @@ public class Youtuber {
         this.channelNameYoutube = channelNameYoutube;
     }
 
-    public BigInteger getSubscribersCount() {
+    public long getSubscribersCount() {
         return subscribersCount;
     }
 
-    public void setSubscribersCount(BigInteger subscribersCount) {
+    public void setSubscribersCount(long subscribersCount) {
         this.subscribersCount = subscribersCount;
     }
 

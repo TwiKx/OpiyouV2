@@ -1,6 +1,7 @@
 package fr.aubin.opiyou.app;
 
 
+import fr.aubin.opiyou.dao.YoutuberDAO;
 import fr.aubin.opiyou.domain.Youtuber;
 import fr.aubin.opiyou.service.Channels;
 import org.slf4j.Logger;
@@ -12,10 +13,9 @@ public class App {
 
     public static void main(String[] args){
 
-        Channels channel = new Channels();
-        Long test;
-        test = channel.getSubsCount("gussdxvideo");
-
-        System.out.print("nbr abos : " + test.toString());
+        Youtuber youtuber = new Youtuber(1, "Bobby", "Teddy", "gussdxvideo", "GussDX", 0, "test", "test", "https://www.youtube.com/user/gussdxvideo");
+        YoutuberDAO maDao = new YoutuberDAO();
+        maDao.createYoutuber(youtuber);
+        maDao.setSubsYoutuber(youtuber);
     }
 }

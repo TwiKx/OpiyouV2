@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import fr.aubin.opiyou.service.Channels;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -123,5 +124,14 @@ public class YoutuberDAO {
         }
 
         return tempYT;
+    }
+
+    public void setSubsYoutuber(Youtuber youtuber){
+        Channels channels = new Channels();
+        String query = "UPDATE youtuber set subscribersCountYoutube = '" + channels.getSubsCount(youtuber.getUsernameYoutuber()) + "' WHERE idYoutuber = '" + youtuber.getIdYoutuber() +"'";
+        connexion.connectDB();
+        connexion.updateData(query);
+        connexion.closeConnection();
+
     }
 }

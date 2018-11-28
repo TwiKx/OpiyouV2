@@ -46,7 +46,7 @@ public class ConnexionBDD {
      */
     public ConnexionBDD() {
         super();
-        this.url = "jdbc:mysql://localhost/opiyou";
+        this.url = "jdbc:mysql://localhost/opiyou?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         this.login = "root";
         this.pass = "";
         this.connect = null;
@@ -62,7 +62,7 @@ public class ConnexionBDD {
         // TODO ici mettre le code pour se connecter à la bdd
         try {
             // Charger le driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Récupérer la connection dans mon objet de type Connection
             connect = DriverManager.getConnection(this.url, this.login, this.pass);

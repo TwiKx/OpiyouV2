@@ -59,7 +59,6 @@ public class ConnexionBDD {
      * Méthode de connection à la base de donnée
      */
     public void connectDB() {
-        // TODO ici mettre le code pour se connecter à la bdd
         try {
             // Charger le driver
             Class.forName("com.mysql.cj.jdbc.Driver");

@@ -12,6 +12,7 @@ import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.Channel;
 import com.google.api.services.youtube.model.ChannelListResponse;
 import fr.aubin.opiyou.dao.ConnexionBDD;
+import fr.aubin.opiyou.domain.Youtuber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,8 +20,9 @@ public class Channels {
 
     final Logger LOGGER = LoggerFactory.getLogger(Channels.class);
 
-    public long getSubsCount(String username) {
+    public long getSubsCount(Youtuber youtuber) {
         long subs=0;
+        String username = youtuber.getUsernameYoutuber();
         HttpRequestInitializer httpRequestInitializer = new HttpRequestInitializer() {
             public void initialize(HttpRequest request) throws IOException {
             }
@@ -40,5 +42,10 @@ public class Channels {
         }
 
         return subs;
+    }
+
+    public String generateChannelLink(Youtuber youtuber){
+        String channelLink = "https://www.youtube.com/user/"+youtuber.getUsernameYoutuber();
+        return channelLink;
     }
 }

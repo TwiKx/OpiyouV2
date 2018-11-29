@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public class YoutuberDAO {
 
-    final Logger LOGGER = LoggerFactory.getLogger(YoutuberDAO.class);
+    final static Logger LOGGER = LoggerFactory.getLogger(YoutuberDAO.class);
 
     ConnexionBDD connexion = new ConnexionBDD();
     Youtuber tempYT = null;
@@ -20,8 +20,11 @@ public class YoutuberDAO {
 
     //CRUD
     public void createYoutuber(Youtuber myYoutuber) {
+        //generate subscount and linkchannel
+        Channels channel = new Channels();
+
         //query
-        String query = "INSERT INTO youtuber VALUES ('" + myYoutuber.getIdYoutuber() + "','" + myYoutuber.getNameYoutuber() + "','" + myYoutuber.getFirstnameYoutuber() + "','" + myYoutuber.getUsernameYoutuber() + "','" + myYoutuber.getChannelNameYoutube() + "','" + myYoutuber.getSubscribersCount() + "','" + myYoutuber.getLoginYoutuber() + "','" + myYoutuber.getPwdYoutuber() + "','" + myYoutuber.getLinkChannel() + "')";
+        String query = "INSERT INTO youtuber VALUES ('" + myYoutuber.getIdYoutuber() + "','" + myYoutuber.getNameYoutuber() + "','" + myYoutuber.getFirstnameYoutuber() + "','" + myYoutuber.getUsernameYoutuber() + "','" + myYoutuber.getChannelNameYoutube() + "','" + channel.getSubsCount(myYoutuber) + "','" + myYoutuber.getLoginYoutuber() + "','" + myYoutuber.getPwdYoutuber() + "','" + channel.generateChannelLink(myYoutuber) + "')";
         connexion.connectDB();
         connexion.updateData(query);
         connexion.closeConnection();
@@ -128,7 +131,7 @@ public class YoutuberDAO {
 
     public void setSubsYoutuber(Youtuber youtuber){
         Channels channels = new Channels();
-        String query = "UPDATE youtuber set subscribersCountYoutube = '" + channels.getSubsCount(youtuber.getUsernameYoutuber()) + "' WHERE idYoutuber = '" + youtuber.getIdYoutuber() +"'";
+        String query = "UPDATE youtuber set subscribersCountYoutube = '" + channels.getSubsCount(youtuber) + "' WHERE idYoutuber = '" + youtuber.getIdYoutuber() +"'";
         connexion.connectDB();
         connexion.updateData(query);
         connexion.closeConnection();

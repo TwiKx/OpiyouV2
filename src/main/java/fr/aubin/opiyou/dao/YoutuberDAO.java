@@ -20,11 +20,8 @@ public class YoutuberDAO {
 
     //CRUD
     public void createYoutuber(Youtuber myYoutuber) {
-        //generate subscount and linkchannel
-        Channels channel = new Channels();
-
         //query
-        String query = "INSERT INTO youtuber VALUES ('" + myYoutuber.getIdYoutuber() + "','" + myYoutuber.getNameYoutuber() + "','" + myYoutuber.getFirstnameYoutuber() + "','" + myYoutuber.getUsernameYoutuber() + "','" + myYoutuber.getChannelNameYoutube() + "','" + channel.getSubsCount(myYoutuber) + "','" + myYoutuber.getLoginYoutuber() + "','" + myYoutuber.getPwdYoutuber() + "','" + channel.generateChannelLink(myYoutuber) + "')";
+        String query = "INSERT INTO youtuber (nameYoutuber, firstnameYoutuber, usernameYoutube, channelNameYoutube, subscribersCountYoutube, loginYoutuber, pwdYoutuber, linkChannel) VALUES ('" + myYoutuber.getNameYoutuber() + "','" + myYoutuber.getFirstnameYoutuber() + "','" + myYoutuber.getUsernameYoutuber() + "','" + myYoutuber.getChannelNameYoutube() + "','" + myYoutuber.getSubscribersCount() + "','" + myYoutuber.getLoginYoutuber() + "','" + myYoutuber.getPwdYoutuber() + "','" + myYoutuber.getLinkChannel() + "')";
         connexion.connectDB();
         connexion.updateData(query);
         connexion.closeConnection();
@@ -131,10 +128,25 @@ public class YoutuberDAO {
 
     public void setSubsYoutuber(Youtuber youtuber){
         Channels channels = new Channels();
-        String query = "UPDATE youtuber set subscribersCountYoutube = '" + channels.getSubsCount(youtuber) + "' WHERE idYoutuber = '" + youtuber.getIdYoutuber() +"'";
+        String query = "UPDATE youtuber set subscribersCountYoutube = '" + youtuber.getSubscribersCount() + "' WHERE idYoutuber = '" + youtuber.getIdYoutuber() +"'";
         connexion.connectDB();
         connexion.updateData(query);
         connexion.closeConnection();
 
+    }
+
+    public int getYoutuberIDbyUsername(Youtuber youtuber){
+        int id = 0;
+        String query = "SELECT * FROM youtuber WHERE usernameYoutube = "+youtuber.getUsernameYoutuber();
+        ResultSet resultSet = connexion.executeRequete(query);
+        try{
+            id = resultSet.getInt("idYoutuber");
+        }catch (SQLException e){
+            LOGGER.error("Error while reading Youtuber ID : ", e);
+        }
+
+        connexion.closeConnection();
+
+        return id;
     }
 }

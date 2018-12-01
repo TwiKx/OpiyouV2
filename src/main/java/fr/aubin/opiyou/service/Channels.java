@@ -20,9 +20,8 @@ public class Channels {
 
     final Logger LOGGER = LoggerFactory.getLogger(Channels.class);
 
-    public long getSubsCount(Youtuber youtuber) {
+    public long getSubsCount(String username) {
         long subs=0;
-        String username = youtuber.getUsernameYoutuber();
         HttpRequestInitializer httpRequestInitializer = new HttpRequestInitializer() {
             public void initialize(HttpRequest request) throws IOException {
             }
@@ -44,8 +43,8 @@ public class Channels {
         return subs;
     }
 
-    public String generateChannelLink(Youtuber youtuber){
-        String channelLink = "https://www.youtube.com/user/"+youtuber.getUsernameYoutuber();
+    public String generateChannelLink(String username){
+        String channelLink = "https://www.youtube.com/user/"+username;
         return channelLink;
     }
 }

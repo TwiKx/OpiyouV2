@@ -11,7 +11,7 @@
   <component name="ProjectResources">
     <resource url="http://xmlns.jcp.org/xml/ns/javaee" location="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="10" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://C:/Program Files/Java/jdk-10.0.2" />
   </component>
 </project>

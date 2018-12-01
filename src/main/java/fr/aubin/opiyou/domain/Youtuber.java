@@ -48,15 +48,16 @@ public class Youtuber {
         this.linkChannel = linkChannel;
     }
 
-    public Youtuber(String nameYoutuber, String firstnameYoutuber, String channelNameYoutube, String loginYoutuber, String pwdYoutuber, String linkChannel) {
+    public Youtuber(String nameYoutuber, String firstnameYoutuber, String usernameYoutuber, String channelNameYoutube, long subscribersCount, String loginYoutuber, String pwdYoutuber, String linkChannel) {
         this.nameYoutuber = nameYoutuber;
         this.firstnameYoutuber = firstnameYoutuber;
+        this.usernameYoutuber = usernameYoutuber;
         this.channelNameYoutube = channelNameYoutube;
+        this.subscribersCount = subscribersCount;
         this.loginYoutuber = loginYoutuber;
         this.pwdYoutuber = pwdYoutuber;
         this.linkChannel = linkChannel;
     }
-
 
     public int getIdYoutuber() {
         return idYoutuber;

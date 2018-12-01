@@ -15,17 +15,6 @@ public class App {
 
     public static void main(String[] args){
 
-        YoutuberService test = new YoutuberService();
-        String pass = "test";
-        try {
-            byte[] salt = test.getSalt();
-            String securedPass = test.encryptSHA256Password(pass, salt);
-            System.out.println(securedPass);
-        }catch (NoSuchAlgorithmException e){
-            e.printStackTrace();
-        }
-
-
 
     }
 }

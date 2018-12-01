@@ -93,9 +93,9 @@ public class YoutuberDAO {
     }
 
     // Method de check authentification
-    public Youtuber checkConnect(String login, String mdp) {
+    public Youtuber checkConnect(String login, String password) {
         // creation de la requete
-        String requete = "SELECT * FROM youtuber WHERE login='" + login + "' AND mdp='" + mdp + "'";
+        String requete = "SELECT * FROM youtuber WHERE loginYoutuber='" + login + "' AND pwdYoutuber='" + password + "'";
 
         // se connecter à la base de donner
         connexion.connectDB();

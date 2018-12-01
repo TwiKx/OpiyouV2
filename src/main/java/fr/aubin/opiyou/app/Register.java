@@ -39,19 +39,13 @@ public class Register extends HttpServlet{
     protected void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         YoutuberService serviceYT = new YoutuberService();
-        byte[] salt = null;
-        try{
-            salt = serviceYT.getSalt();
-        }catch (NoSuchAlgorithmException e){
-            LOGGER.error("Register failed : ", e);
-        }
 
         String nameYT = request.getParameter("nameYoutuber");
         String firstNameYT = request.getParameter("firstNameYoutuber");
         String usernameYoutube = request.getParameter("usernameYoutube");
         String channelName = request.getParameter("channelName");
         String loginYT = request.getParameter("loginYT");
-        String passYT = serviceYT.encryptSHA256Password(request.getParameter("passYT"), salt);
+        String passYT = serviceYT.encryptSHA256Password(request.getParameter("passYT"));
         Channels channels = new Channels();
 
         RequestDispatcher dispatcher;

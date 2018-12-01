@@ -39,7 +39,7 @@
 			</div>
 			<div class="input-group">
 			  <span class="input-group-addon" id="basic-addon2">Mot de passe</span>
-			  <input type="password" class="form-control" aria-describedby="basic-addon2" name="mdpuser">
+			  <input type="password" class="form-control" aria-describedby="basic-addon2" name="passworduser">
 			</div>
 			<div class="input-group">
 				<input type="submit" value="se connecter" class="form-control">

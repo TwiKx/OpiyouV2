@@ -24,11 +24,10 @@ public class YoutuberService {
         maDao.createYoutuber(youtuber);
     }
 
-    public String encryptSHA256Password(String passwordToHash, byte[] salt){
+    public String encryptSHA256Password(String passwordToHash){
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(salt);
             byte[] bytes = md.digest(passwordToHash.getBytes());
             StringBuilder sb = new StringBuilder();
             for(int i=0; i< bytes.length ;i++)
@@ -44,12 +43,4 @@ public class YoutuberService {
         return generatedPassword;
     }
 
-    public byte[] getSalt() throws NoSuchAlgorithmException
-    {
-        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-        byte[] salt = new byte[16];
-        sr.nextBytes(salt);
-
-        return salt;
-    }
 }

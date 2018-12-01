@@ -4,8 +4,11 @@ import fr.aubin.opiyou.dao.YoutuberDAO;
 import fr.aubin.opiyou.domain.Youtuber;
 import fr.aubin.opiyou.service.Channels;
 import fr.aubin.opiyou.service.YoutuberService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.*;
 import javax.servlet.RequestDispatcher;
@@ -15,6 +18,9 @@ import javax.servlet.annotation.WebServlet;
 
 @WebServlet("/connexion")
 public class Connexion extends HttpServlet{
+
+    final Logger LOGGER = LoggerFactory.getLogger(Register.class);
+
     private static final long serialVersionUID = 1L;
 
     public Connexion() {
@@ -33,11 +39,12 @@ public class Connexion extends HttpServlet{
 
     protected void connect(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        YoutuberService serviceYT = new YoutuberService();
+
         String login = request.getParameter("loginuser");
-        String pass = request.getParameter("passworduser");
+        String pass = serviceYT.encryptSHA256Password(request.getParameter("passworduser"));
 
         RequestDispatcher dispatcher;
-        YoutuberService serviceYT = new YoutuberService();
         Youtuber loggedYT = null;
         YoutuberDAO daoYT = new YoutuberDAO();
 
@@ -47,10 +54,10 @@ public class Connexion extends HttpServlet{
         if (loggedYT != null){
             session.setAttribute("youtuber", loggedYT);
             daoYT.setSubsYoutuber(loggedYT);
-            dispatcher = request.getRequestDispatcher("<page-accueil>");
+            dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         } else {
-            dispatcher = request.getRequestDispatcher("<page-error>");
+            dispatcher = request.getRequestDispatcher("error.jsp");
             dispatcher.forward(request, response);
         }
 

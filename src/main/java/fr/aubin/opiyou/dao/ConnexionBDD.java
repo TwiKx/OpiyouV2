@@ -48,7 +48,7 @@ public class ConnexionBDD {
         super();
         this.url = "jdbc:mysql://localhost/opiyou?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         this.login = "root";
-        this.pass = "Opiyou-2k18!";
+        this.pass = "Opiyou2k18!";
         this.connect = null;
         this.st = null;
         this.request = "";

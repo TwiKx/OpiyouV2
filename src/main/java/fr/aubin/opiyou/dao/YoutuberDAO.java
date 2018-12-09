@@ -29,6 +29,7 @@ public class YoutuberDAO {
 
     public Youtuber readByIdYoutuber(int idYoutuber){
         String query = "SELECT * FROM youtuber WHERE idYoutuber="+idYoutuber;
+        connexion.connectDB();
         ResultSet resultSet = connexion.executeRequete(query);
         try{
             while (resultSet.next()){
@@ -55,6 +56,7 @@ public class YoutuberDAO {
     public ArrayList<Youtuber> getAll() {
         // créer la requete
         String requete = "SELECT * FROM youtuber";
+        connexion.connectDB();
         // créer le resultset et y mettre le résultat
         ResultSet rs = connexion.executeRequete(requete);
         // faire un try catch sur ça
@@ -86,6 +88,7 @@ public class YoutuberDAO {
     public void deleteYoutuber(Youtuber myYoutuber) {
         // creer la requete
         String requete = "DELETE FROM youtuber WHERE idYoutuber = " + myYoutuber.getIdYoutuber();
+        connexion.connectDB();
         // executer la requete
         connexion.executeRequete(requete);
         // fermer la connection
@@ -138,6 +141,7 @@ public class YoutuberDAO {
     public int getYoutuberIDbyUsername(Youtuber youtuber){
         int id = 0;
         String query = "SELECT * FROM youtuber WHERE usernameYoutube = "+youtuber.getUsernameYoutuber();
+        connexion.connectDB();
         ResultSet resultSet = connexion.executeRequete(query);
         try{
             id = resultSet.getInt("idYoutuber");

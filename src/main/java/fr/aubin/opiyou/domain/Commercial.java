@@ -6,10 +6,10 @@ public class Commercial {
     private String commercialName;
     private String corporateName;
     private String commercialDescription;
-    private int commercialRemuneration;
+    private double commercialRemuneration;
     private long minSubs;
 
-    public Commercial(int idCommercial, String commercialName, String corporateName, String commercialDescription, int commercialRemuneration, long minSubs) {
+    public Commercial(int idCommercial, String commercialName, String corporateName, String commercialDescription, double commercialRemuneration, long minSubs) {
         this.idCommercial = idCommercial;
         this.commercialName = commercialName;
         this.corporateName = corporateName;
@@ -50,11 +50,11 @@ public class Commercial {
         this.commercialDescription = commercialDescription;
     }
 
-    public int getCommercialRemuneration() {
+    public double getCommercialRemuneration() {
         return commercialRemuneration;
     }
 
-    public void setCommercialRemuneration(int commercialRemuneration) {
+    public void setCommercialRemuneration(double commercialRemuneration) {
         this.commercialRemuneration = commercialRemuneration;
     }
 

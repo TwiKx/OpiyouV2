@@ -19,12 +19,14 @@
                     <th>Rémunération</th>
                 </tr>
                 <c:forEach items="${listCommercials}" var="commercial">
-                    <tr>
-                        <td><c:out value="${commercial.commercialName}" /></td>
-                        <td><c:out value="${commercial.corporateName}" /></td>
-                        <td><c:out value="${commercial.commercialDescription}" /></td>
-                        <td><c:out value="${commercial.commercialRemuneration}" /></td>
-                    </tr>
+                    <c:if test="${youtuber.subscribersCount>commercial.minSubs}">
+                        <tr>
+                            <td><c:out value="${commercial.commercialName}" /></td>
+                            <td><c:out value="${commercial.corporateName}" /></td>
+                            <td><c:out value="${commercial.commercialDescription}" /></td>
+                            <td><c:out value="${commercial.commercialRemuneration}" /></td>
+                        </tr>
+                    </c:if>
                 </c:forEach>
             <table>
         </div>
